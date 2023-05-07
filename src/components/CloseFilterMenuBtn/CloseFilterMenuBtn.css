@@ -1,0 +1,23 @@
+.close-btn-container {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+.close-filter-menu-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  border-radius: calc(4 / 16 * 1rem);
+  background-color: white;
+  font-size: 18px;
+  margin-top: 10px;
+  margin-right: 10px;
+  height: calc(24 / 16 * 1em);
+  width: calc(24 / 16 * 1em);
+  color: rgb(79, 87, 98);
+}
+.close-filter-menu-btn:hover{
+  background-color: rgb(240, 241, 243);
+  cursor: pointer;
+}

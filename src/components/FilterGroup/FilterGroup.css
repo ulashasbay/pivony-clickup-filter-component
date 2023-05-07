@@ -1,0 +1,21 @@
+.filter-group-op-item__btn-container-disabled {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 24px;
+  border: 1px solid #f0f1f3;
+  border-radius: 4px;
+  background-color: #f0f1f3;
+}
+
+.filter-group-op-item__btn-disabled {
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1;
+  justify-content: center;
+  height: 24px;
+  color: #adb3bd;
+}
