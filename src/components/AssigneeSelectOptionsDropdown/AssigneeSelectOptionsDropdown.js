@@ -90,7 +90,7 @@ function AssigneeSelectOptionsDropdown({ selectFilter, filterType, index }) {
                   </span>
                 </div>
               )}
-            {selectFilter?.value == "Me" && (
+            {selectFilter?.value === "Me" && (
               <div
                 className="assignee-list-item-icon"
                 style={{
@@ -105,7 +105,7 @@ function AssigneeSelectOptionsDropdown({ selectFilter, filterType, index }) {
                 ></i>
               </div>
             )}
-            {selectFilter?.value == "Unassigned" && (
+            {selectFilter?.value === "Unassigned" && (
               <div
                 className="assignee-list-item-icon"
                 style={{ width: "24px", height: "24px" }}

@@ -25,11 +25,11 @@ function FilterGroup({ selectFilter, index }) {
   const handleOperatorBtn = () => {
     setFilters(
       filters?.map((item) => {
-        if (filters.indexOf(item) == 0) {
-          if (item == "AND") {
+        if (filters.indexOf(item) === 0) {
+          if (item === "AND") {
             return "OR";
           }
-          if (item == "OR") {
+          if (item === "OR") {
             return "AND";
           }
         }
@@ -41,13 +41,13 @@ function FilterGroup({ selectFilter, index }) {
   const handleGroupOperatorBtn = () => {
     setFilters(
       filters.map((item) => {
-        if (filters.indexOf(item) == index) {
+        if (filters.indexOf(item) === index) {
           return filters[index].map((items) => {
-            if (filters[index].indexOf(items) == 0) {
-              if (items == "AND") {
+            if (filters[index].indexOf(items) === 0) {
+              if (items === "AND") {
                 return "OR";
               }
-              if (items == "OR") {
+              if (items === "OR") {
                 return "AND";
               }
             }

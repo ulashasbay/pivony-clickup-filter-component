@@ -21,7 +21,7 @@ function SelectTagsOptionsDropdown() {
     return () => {
       document.removeEventListener("mousedown", handler);
     };
-  });
+  },[]);
 
   return (
     <div className="filter-date-title" ref={dropdownRef}>

@@ -95,7 +95,7 @@ function StatusSelectOptionsDropdown({ selectFilter, index, filterType }) {
     return () => {
       document.removeEventListener("mousedown", handler);
     };
-  });
+  },[]);
 
   return (
     <div className="filter-date-title" ref={dropdownRef}>

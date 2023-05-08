@@ -68,7 +68,7 @@ function PrioritySelectOptionsDropdown({ selectFilter, filterType, index }) {
     return () => {
       document.removeEventListener("mousedown", handler);
     };
-  });
+  },[]);
   return (
     <div className="filter-date-title" ref={dropdownRef}>
       <div className="filter-value-add-dropdown">

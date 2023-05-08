@@ -34,7 +34,7 @@ function DateExtraValueDropdown({ selectFilter, index, filterType }) {
     return () => {
       document.removeEventListener("mousedown", handler);
     };
-  });
+  },[]);
   return (
     <div
       className="date-extra-value-filter-operator-title"

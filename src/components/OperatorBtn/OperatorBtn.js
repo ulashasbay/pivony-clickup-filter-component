@@ -4,10 +4,10 @@ import "./OperatorBtn.css";
 function OperatorBtn({ selectFilter, text, handleOperatorBtn, filter }) {
   return (
     <div className="filter-group-op">
-      {filter?.indexOf(selectFilter) == "1" && (
+      {filter?.indexOf(selectFilter) === 1 && (
         <div className="filter-group-op-item">Where</div>
       )}
-      {filter?.indexOf(selectFilter) == "2" && (
+      {filter?.indexOf(selectFilter) === 2 && (
         <div className="filter-group-op-item">
           <div className="filter-group-op-item__btn-container">
             <button
