@@ -1,7 +1,10 @@
 import React from "react";
 import "./Navbar.css";
+import { useFilter } from "../../context/FilterContext";
 
 function Navbar({ handleClickFilterBtn }) {
+  const { isFilterMenuOpen } = useFilter();
+
   return (
     <div className="navbar-container">
       <div
@@ -10,7 +13,7 @@ function Navbar({ handleClickFilterBtn }) {
       <div className="navbar-body">
         <div className="navbar-filter-block">
           <div className="navbar-filter-block__filter-btn-container">
-            <div className="navbar-filter-block__filter-body">
+            <div className="navbar-filter-block__filter-body" style={{backgroundColor: isFilterMenuOpen ? "rgb(232, 234, 237)" : "#fff"}}>
               <button
                 className="navbar-filter-block__filter-btn"
                 onClick={handleClickFilterBtn}

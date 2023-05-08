@@ -158,7 +158,7 @@ function AssigneeSelectOptionsDropdown({ selectFilter, filterType, index }) {
                       type="button"
                       onClick={() => handleFilter(item)}
                     >
-                      {item == "Unassigned" && (
+                      {item === "Unassigned" && (
                         <div className="assignee-list-item-icon">
                           <i
                             className=" fa fa-solid fa-users"
@@ -167,7 +167,7 @@ function AssigneeSelectOptionsDropdown({ selectFilter, filterType, index }) {
                         </div>
                       )}
 
-                      {item == "Me" && (
+                      {item === "Me" && (
                         <div
                           className="assignee-list-item-icon"
                           style={{ backgroundColor: "orange" }}

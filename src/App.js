@@ -5,12 +5,11 @@ import FilterGroup from "./components/FilterGroup/FilterGroup";
 import { useFilter } from "./context/FilterContext";
 import { v4 as uuidv4 } from "uuid";
 import Navbar from "./components/Navbar/Navbar";
-import { useState } from "react";
 
 function App() {
-  const { filters, setFilters } = useFilter();
+  const { filters, setFilters,isFilterMenuOpen, setIsFilterMenuOpen } = useFilter();
 
-  const [isFilterMenuOpen, setIsFilterMenuOpen] = useState(false);
+  // const [isFilterMenuOpen, setIsFilterMenuOpen] = useState(false);
 
   const handleClickFilterBtn = () => {
     setIsFilterMenuOpen(!isFilterMenuOpen);

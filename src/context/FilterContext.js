@@ -14,10 +14,14 @@ export function FilterProvider({ children }) {
 
   const maxwidth = ["Is", "Is not"]
 
+  const [isFilterMenuOpen, setIsFilterMenuOpen] = useState(false);
+
   const value = {
     setFilters,
     filters,
     maxwidth,
+    isFilterMenuOpen,
+    setIsFilterMenuOpen,
   };
 
   return (

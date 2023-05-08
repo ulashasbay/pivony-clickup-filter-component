@@ -1,14 +1,11 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./DateExtraValueDropdown.css";
 import categoriesFilter from "../../assets/categoriesFilter";
-import { useFilter } from "../../context/FilterContext";
 
 function DateExtraValueDropdown({ selectFilter, index, filterType }) {
   const [extra, setExtra] = useState(
     categoriesFilter[selectFilter?.name].extra[0]
   );
-
-  const { filters } = useFilter();
 
   const [isOpen, setIsOpen] = useState(false);
 

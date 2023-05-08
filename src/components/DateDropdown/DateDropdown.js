@@ -57,14 +57,14 @@ function DateDropdown({ selectFilter, index, filterType }) {
     return () => {
       document.removeEventListener("mousedown", handler);
     };
-  }, []);
+  },[]);
 
   useEffect(() => {
     const filteredTags = categoriesFilter[selectFilter?.name].value.filter(
       (item) => item?.toLowerCase().includes(searchTerm.toLowerCase())
     );
     setFilteredData(filteredTags);
-  }, [searchTerm]);
+  },[searchTerm]);
 
   return (
     <div className="filter-date-title" ref={dropdownRef}>

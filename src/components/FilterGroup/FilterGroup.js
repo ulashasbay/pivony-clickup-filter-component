@@ -121,10 +121,10 @@ function FilterGroup({ selectFilter, index }) {
             {dateFilters.includes(selectFilter.name) && (
               <DateFilters selectFilter={selectFilter} filterType={"main"} />
             )}
-            {selectFilter.name == "Tags" && (
+            {selectFilter.name === "Tags" && (
               <TagsFilter selectFilter={selectFilter} filterType={"main"} />
             )}
-            {selectFilter.name == "Status" && (
+            {selectFilter.name === "Status" && (
               <StatusFilter selectFilter={selectFilter} filterType={"main"} />
             )}
             {priorityFilters.includes(selectFilter.name) && (
@@ -180,14 +180,14 @@ function FilterGroup({ selectFilter, index }) {
                               filterType={"group"}
                             />
                           )}
-                          {item.name == "Tags" && (
+                          {item.name === "Tags" && (
                             <TagsFilter
                               selectFilter={item}
                               index={index}
                               filterType={"group"}
                             />
                           )}
-                          {item.name == "Status" && (
+                          {item.name === "Status" && (
                             <StatusFilter
                               selectFilter={item}
                               index={index}
