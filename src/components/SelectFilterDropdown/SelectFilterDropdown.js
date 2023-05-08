@@ -8,8 +8,13 @@ function SelectFilterDropdown({ selectFilter, index, filterType }) {
 
   const [isOpen, setIsOpen] = useState(false);
 
+  const [filteredData, setFilteredData] = useState([]);
+
+  const [searchTerm, setSearchTerm] = useState("");
+
   const handleClickBtn = () => {
     setIsOpen(!isOpen);
+    setSearchTerm("");
   };
 
   const handleFilter = (select) => {
@@ -48,6 +53,7 @@ function SelectFilterDropdown({ selectFilter, index, filterType }) {
     let handler = (e) => {
       if (!dropdownRef.current.contains(e.target)) {
         setIsOpen(false);
+        setSearchTerm("");
       }
     };
     document.addEventListener("mousedown", handler);
@@ -55,10 +61,24 @@ function SelectFilterDropdown({ selectFilter, index, filterType }) {
     return () => {
       document.removeEventListener("mousedown", handler);
     };
-  });
+  }, []);
+
+  useEffect(() => {
+    const filteredTags = Object.keys(categoriesFilter)?.filter((item) =>
+      item?.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+    setFilteredData(filteredTags);
+  }, [searchTerm]);
 
   return (
-    <div className="filter-value-title" ref={dropdownRef}>
+    <div
+      className="filter-value-title"
+      style={{
+        backgroundColor:
+          selectFilter?.name !== "Select Filter" ? "#f7f8f9" : "#fff",
+      }}
+      ref={dropdownRef}
+    >
       <div className="filter-value-add-dropdown">
         <div
           className="filter-value-add-droppdown-toggle"
@@ -87,6 +107,7 @@ function SelectFilterDropdown({ selectFilter, index, filterType }) {
                   type="text"
                   placeholder="Search..."
                   className="serach-input__input"
+                  onChange={(e) => setSearchTerm(e.target.value)}
                 />
                 <div className="search-input-icon icon">
                   <i
@@ -98,7 +119,7 @@ function SelectFilterDropdown({ selectFilter, index, filterType }) {
             </div>
             <div className="virtual-scroll-content-wrapper">
               <div className="filter-value-add-dropdown-list-container">
-                {Object.keys(categoriesFilter).map((item) => {
+                {filteredData.map((item) => {
                   return (
                     <div
                       key={item}

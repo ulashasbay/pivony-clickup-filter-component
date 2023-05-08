@@ -8,8 +8,13 @@ function AssigneeSelectOptionsDropdown({ selectFilter, filterType, index }) {
 
   const [isOpen, setIsOpen] = useState(false);
 
+  const [filteredData, setFilteredData] = useState([]);
+
+  const [searchTerm, setSearchTerm] = useState("");
+
   const handleClickBtn = () => {
     setIsOpen(!isOpen);
+    setSearchTerm("");
   };
 
   const handleFilter = (select) => {
@@ -44,6 +49,7 @@ function AssigneeSelectOptionsDropdown({ selectFilter, filterType, index }) {
     let handler = (e) => {
       if (!dropdownRef.current.contains(e.target)) {
         setIsOpen(false);
+        setSearchTerm("");
       }
     };
     document.addEventListener("mousedown", handler);
@@ -51,7 +57,15 @@ function AssigneeSelectOptionsDropdown({ selectFilter, filterType, index }) {
     return () => {
       document.removeEventListener("mousedown", handler);
     };
-  });
+  }, []);
+
+  useEffect(() => {
+    const filteredTags = categoriesFilter[selectFilter?.name].value.filter(
+      (item) => item?.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+    setFilteredData(filteredTags);
+  }, [searchTerm]);
+
   return (
     <div className="filter-date-title" ref={dropdownRef}>
       <div className="filter-value-add-dropdown">
@@ -124,6 +138,7 @@ function AssigneeSelectOptionsDropdown({ selectFilter, filterType, index }) {
                   type="text"
                   placeholder="Search..."
                   className="serach-input__input"
+                  onChange={(e) => setSearchTerm(e.target.value)}
                 />
                 <div className="search-input-icon icon">
                   <i
@@ -135,7 +150,7 @@ function AssigneeSelectOptionsDropdown({ selectFilter, filterType, index }) {
             </div>
             <div className="assignee-content-wrapper">
               <div className="assignee-dropdown-list-container">
-                {categoriesFilter[selectFilter?.name].value.map((item) => {
+                {filteredData.map((item) => {
                   return (
                     <div
                       key={item}

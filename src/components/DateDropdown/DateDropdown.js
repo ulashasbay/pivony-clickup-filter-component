@@ -8,8 +8,13 @@ function DateDropdown({ selectFilter, index, filterType }) {
 
   const [isOpen, setIsOpen] = useState(false);
 
+  const [filteredData, setFilteredData] = useState([]);
+
+  const [searchTerm, setSearchTerm] = useState("");
+
   const handleClickBtn = () => {
     setIsOpen(!isOpen);
+    setSearchTerm("");
   };
 
   const handleFilter = (select) => {
@@ -44,6 +49,7 @@ function DateDropdown({ selectFilter, index, filterType }) {
     let handler = (e) => {
       if (!dropdownRef.current.contains(e.target)) {
         setIsOpen(false);
+        setSearchTerm("");
       }
     };
     document.addEventListener("mousedown", handler);
@@ -51,7 +57,14 @@ function DateDropdown({ selectFilter, index, filterType }) {
     return () => {
       document.removeEventListener("mousedown", handler);
     };
-  });
+  }, []);
+
+  useEffect(() => {
+    const filteredTags = categoriesFilter[selectFilter?.name].value.filter(
+      (item) => item?.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+    setFilteredData(filteredTags);
+  }, [searchTerm]);
 
   return (
     <div className="filter-date-title" ref={dropdownRef}>
@@ -83,6 +96,7 @@ function DateDropdown({ selectFilter, index, filterType }) {
                   type="text"
                   placeholder="Search..."
                   className="serach-input__input"
+                  onChange={(e) => setSearchTerm(e.target.value)}
                 />
                 <div className="search-input-icon icon">
                   <i
@@ -94,7 +108,7 @@ function DateDropdown({ selectFilter, index, filterType }) {
             </div>
             <div className="virtual-scroll-content-wrapper">
               <div className="filter-value-add-dropdown-list-container">
-                {categoriesFilter[selectFilter?.name].value.map((item) => {
+                {filteredData.map((item) => {
                   return (
                     <div
                       key={item}

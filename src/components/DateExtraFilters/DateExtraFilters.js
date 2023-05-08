@@ -38,7 +38,6 @@ function DateExtraFilters({ selectFilter, index, filterType }) {
         return item;
       })
     );
-    console.log(filters);
     setIsOpen(!isOpen);
   };
 
